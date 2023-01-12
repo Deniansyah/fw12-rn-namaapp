@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   Stack,
@@ -16,6 +17,7 @@ import logo from '../assets/auth-img/text-logo.png';
 
 const SetPassword = () => {
   const [show, setShow] = React.useState(false);
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <VStack height="full" p="5">
@@ -74,7 +76,10 @@ const SetPassword = () => {
                 placeholder="Write your confirm password"
               />
             </Stack>
-            <Button rounded="md" background="#F15302">
+            <Button
+              onPress={() => navigation.navigate('Login')}
+              rounded="md"
+              background="#F15302">
               Submit
             </Button>
           </VStack>

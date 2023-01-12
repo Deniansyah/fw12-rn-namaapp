@@ -8,6 +8,7 @@ import {
   Input,
   Button,
 } from 'native-base';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -16,6 +17,7 @@ import film1big from '../assets/home-img/1big.png';
 import ebv from '../assets/home-img/ebv.png';
 
 const MovieDetail = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <VStack>
@@ -125,7 +127,9 @@ const MovieDetail = () => {
                   $10.00/seat
                 </Text>
               </HStack>
-              <Button bg="#f15302">Book now</Button>
+              <Button onPress={() => navigation.navigate('Order')} bg="#f15302">
+                Book now
+              </Button>
             </Box>
             <Box p="6" borderRadius="lg" bg="white">
               <Box
@@ -161,7 +165,9 @@ const MovieDetail = () => {
                   $10.00/seat
                 </Text>
               </HStack>
-              <Button bg="#f15302">Book now</Button>
+              <Button onPress={() => navigation.navigate('Order')} bg="#f15302">
+                Book now
+              </Button>
             </Box>
             <Box p="6" borderRadius="lg" bg="white">
               <Box
@@ -197,7 +203,9 @@ const MovieDetail = () => {
                   $10.00/seat
                 </Text>
               </HStack>
-              <Button bg="#f15302">Book now</Button>
+              <Button onPress={() => navigation.navigate('Order')} bg="#f15302">
+                Book now
+              </Button>
             </Box>
           </VStack>
           <Box justifyContent="center" alignItems="center" mt="5">

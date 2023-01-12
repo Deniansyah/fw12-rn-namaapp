@@ -10,6 +10,7 @@ import {
   Button,
 } from 'native-base';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Feather from 'react-native-vector-icons/Feather';
@@ -22,6 +23,7 @@ import paypal from '../assets/payment-img/paypal.png';
 import visa from '../assets/payment-img/visa.png';
 
 const Payment = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <VStack>
@@ -191,7 +193,9 @@ const Payment = () => {
                 <Text>Fill your data correctly.</Text>
               </HStack>
             </VStack>
-            <Button bg="#f15302">Pay your order</Button>
+            <Button onPress={() => navigation.navigate('History')} bg="#f15302">
+              Pay your order
+            </Button>
           </VStack>
         </VStack>
         <Footer />

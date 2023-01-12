@@ -11,6 +11,7 @@ import {
   Icon,
 } from 'native-base';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Feather from 'react-native-vector-icons/Feather';
@@ -19,6 +20,7 @@ import profile from '../assets/profile-img/profile.png';
 
 const Profile = () => {
   const [show, setShow] = React.useState(false);
+  const navigation = useNavigation();
 
   return (
     <ScrollView>
@@ -31,16 +33,20 @@ const Profile = () => {
             px="10"
             bg="white"
             mb="10">
-            <Text
-              fontSize="lg"
-              borderBottomWidth="1"
-              borderBottomColor="#f15302"
-              pb="5">
-              Details Account
-            </Text>
-            <Text fontSize="lg" color="gray.400">
-              Order History
-            </Text>
+            <Pressable onPress={() => navigation.navigate('Profile')}>
+              <Text
+                fontSize="lg"
+                borderBottomWidth="1"
+                borderBottomColor="#f15302"
+                pb="5">
+                Details Account
+              </Text>
+            </Pressable>
+            <Pressable onPress={() => navigation.navigate('History')}>
+              <Text fontSize="lg" color="gray.400">
+                Order History
+              </Text>
+            </Pressable>
           </HStack>
           <Box bg="white" borderRadius="lg" py="6" mb="10" mx="5">
             <Box>
@@ -64,7 +70,10 @@ const Profile = () => {
               </Box>
             </Box>
             <Box px="4" justifyContent="center" alignItems="center">
-              <Button bg="#f15302" width="200">
+              <Button
+                onPress={() => navigation.navigate('Login')}
+                bg="#f15302"
+                width="200">
                 Logout
               </Button>
             </Box>

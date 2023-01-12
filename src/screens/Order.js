@@ -9,6 +9,7 @@ import {
   Button,
 } from 'native-base';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Feather from 'react-native-vector-icons/Feather';
@@ -16,6 +17,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import cineone21 from '../assets/home-img/cineone21.png';
 
 const Order = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <VStack>
@@ -100,7 +102,9 @@ const Order = () => {
               </Text>
             </HStack>
           </VStack>
-          <Button bg="#f15302">Checkout now</Button>
+          <Button onPress={() => navigation.navigate('Payment')} bg="#f15302">
+            Checkout now
+          </Button>
         </VStack>
         <Footer />
       </VStack>

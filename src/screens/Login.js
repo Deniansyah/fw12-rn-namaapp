@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {
   Stack,
   Text,
@@ -15,6 +16,7 @@ import logo from '../assets/auth-img/text-logo.png';
 
 const Login = () => {
   const [show, setShow] = React.useState(false);
+  const navigation = useNavigation();
   return (
     <VStack height="full" p="5">
       <Stack>
@@ -61,21 +63,28 @@ const Login = () => {
               placeholder="Write your password"
             />
           </Stack>
-          <Button rounded="md" background="#F15302">
+          <Button
+            rounded="md"
+            background="#F15302"
+            onPress={() => navigation.navigate('Landing')}>
             Login
           </Button>
-          <Stack alignItems="center">
+          <Stack alignItems="center" space="2">
             <Text>
               Forgot your password?{' '}
-              <Text color="#F15302" underline>
-                Reset now
-              </Text>
+              <Pressable onPress={() => navigation.navigate('ForgotPassword')}>
+                <Text color="#F15302" underline>
+                  Reset now
+                </Text>
+              </Pressable>
             </Text>
             <Text>
               Don’t have an account?{' '}
-              <Text color="#F15302" underline>
-                Sign Up
-              </Text>
+              <Pressable onPress={() => navigation.navigate('Register')}>
+                <Text color="#F15302" underline>
+                  Sign Up
+                </Text>
+              </Pressable>
             </Text>
           </Stack>
         </VStack>

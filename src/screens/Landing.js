@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {
   VStack,
   Text,
@@ -8,6 +9,7 @@ import {
   HStack,
   Button,
   Input,
+  Pressable,
 } from 'native-base';
 // import Feather from 'react-native-vector-icons/Feather';
 // import logo from '../assets/auth-img/text-logo.png';
@@ -21,6 +23,7 @@ import film3 from '../assets/home-img/3.png';
 import film4 from '../assets/home-img/4.png';
 
 const Landing = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <VStack>
@@ -43,7 +46,9 @@ const Landing = () => {
             <Text fontSize="lg" bold color="#f15302">
               Now Showing
             </Text>
-            <Text color="#f15302">view all</Text>
+            <Pressable onPress={() => navigation.navigate('ListMovie')}>
+              <Text color="#f15302">view all</Text>
+            </Pressable>
           </HStack>
           <ScrollView horizontal>
             <HStack space="4">
@@ -92,7 +97,9 @@ const Landing = () => {
             <Text fontSize="lg" bold mb="5">
               Upcoming Movies
             </Text>
-            <Text color="#F15302">view all</Text>
+            <Pressable onPress={() => navigation.navigate('ListMovie')}>
+              <Text color="#F15302">view all</Text>
+            </Pressable>
           </HStack>
           <ScrollView horizontal mb="5">
             <HStack space="3">
@@ -151,7 +158,10 @@ const Landing = () => {
                 <Text color="gray.400" mt="2" mb="5">
                   Action, Adventure, Sci-Fi
                 </Text>
-                <Button width="150" bg="#f15302">
+                <Button
+                  onPress={() => navigation.navigate('MovieDetail')}
+                  width="150"
+                  bg="#f15302">
                   Details
                 </Button>
               </Box>
@@ -177,7 +187,10 @@ const Landing = () => {
                 <Text color="gray.400" mt="2" mb="5">
                   Action, Adventure, Sci-Fi
                 </Text>
-                <Button width="150" bg="#f15302">
+                <Button
+                  onPress={() => navigation.navigate('MovieDetail')}
+                  width="150"
+                  bg="#f15302">
                   Details
                 </Button>
               </Box>
@@ -203,7 +216,10 @@ const Landing = () => {
                 <Text color="gray.400" mt="2" mb="5">
                   Action, Adventure, Sci-Fi
                 </Text>
-                <Button width="150" bg="#f15302">
+                <Button
+                  onPress={() => navigation.navigate('MovieDetail')}
+                  width="150"
+                  bg="#f15302">
                   Details
                 </Button>
               </Box>
@@ -229,7 +245,10 @@ const Landing = () => {
                 <Text color="gray.400" mt="2" mb="5">
                   Action, Adventure, Sci-Fi
                 </Text>
-                <Button width="150" bg="#f15302">
+                <Button
+                  onPress={() => navigation.navigate('MovieDetail')}
+                  width="150"
+                  bg="#f15302">
                   Details
                 </Button>
               </Box>

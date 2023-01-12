@@ -5,7 +5,12 @@ import logo from '../assets/auth-img/text-logo.png';
 
 const Navbar = () => {
   return (
-    <HStack alignItems="center" justifyContent="space-between" py="3" px="5">
+    <HStack
+      alignItems="center"
+      justifyContent="space-between"
+      py="3"
+      px="5"
+      bg="white">
       <Box>
         <Image
           source={logo}

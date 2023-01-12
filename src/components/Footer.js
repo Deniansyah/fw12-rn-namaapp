@@ -1,5 +1,6 @@
-import {Box, HStack, Icon, Image, Text, VStack} from 'native-base';
+import {Box, HStack, Icon, Image, Text, VStack, Pressable} from 'native-base';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
 
 import logo from '../assets/auth-img/text-logo.png';
@@ -8,6 +9,7 @@ import hiflix from '../assets/home-img/hiflix.png';
 import cineone21 from '../assets/home-img/cineone21.png';
 
 const Footer = () => {
+  const navigation = useNavigation();
   return (
     <VStack pt="5" px="5">
       <Image
@@ -26,8 +28,12 @@ const Footer = () => {
           Explore
         </Text>
         <HStack space="3">
-          <Text color="gray.500">Home</Text>
-          <Text color="gray.500">List Movie</Text>
+          <Pressable onPress={() => navigation.navigate('Landing')}>
+            <Text color="gray.500">Home</Text>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('ListMovie')}>
+            <Text color="gray.500">List Movie</Text>
+          </Pressable>
         </HStack>
       </Box>
       <Box mb="10">

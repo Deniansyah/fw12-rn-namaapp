@@ -10,6 +10,7 @@ import {
   Select,
 } from 'native-base';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 // import Feather from 'react-native-vector-icons/Feather';
@@ -20,6 +21,7 @@ import film3 from '../assets/home-img/3.png';
 // import film4 from '../assets/home-img/4.png';
 
 const ListMovie = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <VStack>
@@ -93,7 +95,10 @@ const ListMovie = () => {
                   Action, Adventure, Sci-Fi
                 </Text>
               </Box>
-              <Button width="120" bg="#f15302">
+              <Button
+                onPress={() => navigation.navigate('MovieDetail')}
+                width="120"
+                bg="#f15302">
                 Details
               </Button>
             </Box>
@@ -113,7 +118,10 @@ const ListMovie = () => {
                   Action, Adventure, Sci-Fi
                 </Text>
               </Box>
-              <Button width="120" bg="#f15302">
+              <Button
+                onPress={() => navigation.navigate('MovieDetail')}
+                width="120"
+                bg="#f15302">
                 Details
               </Button>
             </Box>
@@ -135,7 +143,10 @@ const ListMovie = () => {
                   Action, Adventure, Sci-Fi
                 </Text>
               </Box>
-              <Button width="120" bg="#f15302">
+              <Button
+                onPress={() => navigation.navigate('MovieDetail')}
+                width="120"
+                bg="#f15302">
                 Details
               </Button>
             </Box>
@@ -155,7 +166,10 @@ const ListMovie = () => {
                   Action, Adventure, Sci-Fi
                 </Text>
               </Box>
-              <Button width="120" bg="#f15302">
+              <Button
+                onPress={() => navigation.navigate('MovieDetail')}
+                width="120"
+                bg="#f15302">
                 Details
               </Button>
             </Box>

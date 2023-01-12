@@ -9,9 +9,11 @@ import {
   FormControl,
   ScrollView,
 } from 'native-base';
+import {useNavigation} from '@react-navigation/native';
 import logo from '../assets/auth-img/text-logo.png';
 
 const ForgotPassword = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <VStack height="full" p="5">
@@ -38,7 +40,10 @@ const ForgotPassword = () => {
               </Text>
               <Input type="email" placeholder="Write your email" />
             </Stack>
-            <Button rounded="md" background="#F15302">
+            <Button
+              onPress={() => navigation.navigate('SetPassword')}
+              rounded="md"
+              background="#F15302">
               Send
             </Button>
           </VStack>
