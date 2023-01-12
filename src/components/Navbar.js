@@ -1,9 +1,11 @@
 import React from 'react';
-import {Image, HStack, Icon, Box, Pressable} from 'native-base';
-import Feather from 'react-native-vector-icons/Feather';
+import {Image, HStack, Box, Pressable, Menu, HamburgerIcon} from 'native-base';
+// import Feather from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
 import logo from '../assets/auth-img/text-logo.png';
 
 const Navbar = () => {
+  const navigation = useNavigation();
   return (
     <HStack
       alignItems="center"
@@ -21,14 +23,38 @@ const Navbar = () => {
         />
       </Box>
       <Box>
-        <Icon
+        {/* <Icon
           size={30}
           as={
             <Pressable>
               <Feather name="menu" size={30} />
             </Pressable>
           }
-        />
+        /> */}
+        <Menu
+          w="190"
+          trigger={triggerProps => {
+            return (
+              <Pressable
+                accessibilityLabel="More options menu"
+                {...triggerProps}>
+                <HamburgerIcon />
+              </Pressable>
+            );
+          }}>
+          <Menu.Item onPress={() => navigation.navigate('Landing')}>
+            Home
+          </Menu.Item>
+          <Menu.Item onPress={() => navigation.navigate('ListMovie')}>
+            List Movie
+          </Menu.Item>
+          <Menu.Item onPress={() => navigation.navigate('Profile')}>
+            Profile
+          </Menu.Item>
+          <Menu.Item onPress={() => navigation.navigate('Login')}>
+            Logout
+          </Menu.Item>
+        </Menu>
       </Box>
     </HStack>
   );
