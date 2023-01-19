@@ -22,8 +22,57 @@ import film2 from '../assets/home-img/2.png';
 import film3 from '../assets/home-img/3.png';
 import film4 from '../assets/home-img/4.png';
 
+// import http from '../helpers/http';
+
 const Landing = () => {
   const navigation = useNavigation();
+  const [focus, setFocus] = React.useState(null);
+  const toggleFocus = id => {
+    if (focus === id) {
+      setFocus(null);
+    } else {
+      setFocus(id);
+    }
+  };
+
+  const movie = [
+    {
+      id: 1,
+      title: 'Title Movie',
+      genre: 'Genre Movie',
+      image: film1,
+    },
+    {
+      id: 2,
+      title: 'Title Movie',
+      genre: 'Genre Movie',
+      image: film2,
+    },
+    {
+      id: 3,
+      title: 'Title Movie',
+      genre: 'Genre Movie',
+      image: film3,
+    },
+    {
+      id: 4,
+      title: 'Title Movie',
+      genre: 'Genre Movie',
+      image: film4,
+    },
+  ];
+
+  // const [message, setMessage] = React.useState('');
+
+  // const getData = async () => {
+  //   const {data} = await http().get('/');
+  //   setMessage(data.message);
+  // };
+
+  // React.useEffect(() => {
+  //   getData();
+  // }, []);
+
   return (
     <ScrollView>
       <VStack>
@@ -32,6 +81,7 @@ const Landing = () => {
         <VStack mt="5" mb="20" px="5">
           <Box mb="10">
             <Text color="gray.400">Nearest Cinema, Newest Movie,</Text>
+            {/* {message && <Text>{message}</Text>} */}
             <Text fontSize="4xl" fontWeight="bold" color="#F15302">
               Find out now!
             </Text>
@@ -52,42 +102,33 @@ const Landing = () => {
           </HStack>
           <ScrollView horizontal>
             <HStack space="4">
-              <Box borderColor="white" borderWidth="2" p="5" borderRadius="md">
-                <Image
-                  source={film1}
-                  alt="film1"
-                  width="150"
-                  height="230"
-                  resizeMode="cover"
-                />
-              </Box>
-              <Box borderColor="white" borderWidth="2" p="5" borderRadius="md">
-                <Image
-                  source={film2}
-                  alt="film2"
-                  width="150"
-                  height="230"
-                  resizeMode="cover"
-                />
-              </Box>
-              <Box borderColor="white" borderWidth="2" p="5" borderRadius="md">
-                <Image
-                  source={film3}
-                  alt="film3"
-                  width="150"
-                  height="230"
-                  resizeMode="cover"
-                />
-              </Box>
-              <Box borderColor="white" borderWidth="2" p="5" borderRadius="md">
-                <Image
-                  source={film4}
-                  alt="film4"
-                  width="150"
-                  height="230"
-                  resizeMode="cover"
-                />
-              </Box>
+              {movie.map(o => (
+                <Pressable key={o.id} onPress={() => toggleFocus(o.id)}>
+                  <Box
+                    borderColor="white"
+                    bg={focus === o.id ? 'white' : 'transparent'}
+                    borderWidth="2"
+                    p="5"
+                    borderRadius="md">
+                    <Image
+                      source={o.image}
+                      alt={o.title}
+                      width="150"
+                      height="230"
+                      resizeMode="cover"
+                    />
+                    {focus === o.id && (
+                      <Box mt="3" justifyContent="center" alignItems="center">
+                        <Text fontSize="xl">{o.title}</Text>
+                        <Text color="gray.500">{o.genre}</Text>
+                        <Button width="150" mt="3" bg="#f15302">
+                          Details
+                        </Button>
+                      </Box>
+                    )}
+                  </Box>
+                </Pressable>
+              ))}
             </HStack>
           </ScrollView>
         </VStack>

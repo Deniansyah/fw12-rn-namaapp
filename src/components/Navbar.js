@@ -2,10 +2,21 @@ import React from 'react';
 import {Image, HStack, Box, Pressable, Menu, HamburgerIcon} from 'native-base';
 // import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
+
+import {useDispatch} from 'react-redux';
+import {logoutAction} from '../redux/reducers/auth';
+
 import logo from '../assets/auth-img/text-logo.png';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  const handlerLogout = () => {
+    dispatch(logoutAction());
+    navigation.navigate('login');
+  };
+
   return (
     <HStack
       alignItems="center"
@@ -51,9 +62,7 @@ const Navbar = () => {
           <Menu.Item onPress={() => navigation.navigate('Profile')}>
             Profile
           </Menu.Item>
-          <Menu.Item onPress={() => navigation.navigate('Login')}>
-            Logout
-          </Menu.Item>
+          <Menu.Item onPress={handlerLogout}>Logout</Menu.Item>
         </Menu>
       </Box>
     </HStack>
